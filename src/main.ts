@@ -6,6 +6,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.useGlobalPipes(
     new ValidationPipe({
+      transform: true, // 👈 This will transform our payload to DTO instance
       forbidNonWhitelisted: true, // 👈Throw errors when whitelisted properties are found
       whitelist: true,
     }),
